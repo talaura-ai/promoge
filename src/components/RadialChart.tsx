@@ -3,9 +3,10 @@ import { useState } from "react";
 import { AgGauge } from "ag-charts-react";
 import "ag-charts-enterprise";
 import React from "react";
+import { AgGaugeOptions } from "ag-charts-enterprise";
 
 const RadialChart = () => {
-  const [options] = useState({
+  const [options] = useState<AgGaugeOptions>({
     type: "radial-gauge",
 
     value: 86,
