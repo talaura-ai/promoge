@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   AppBar,
   Typography,
@@ -6,6 +6,7 @@ import {
   IconButton,
   Avatar,
   Box,
+  Button,
 } from "@mui/material";
 import {
   Search as SearchIcon,
@@ -14,14 +15,40 @@ import {
 } from "@mui/icons-material";
 import MenuIcon from "@mui/icons-material/Menu";
 import { colors } from "../assets/contants/colors";
+import Dropdown from "./ui/Dropdown";
+import UserProfile from "./ui/UserProfile";
+import { userProfile } from "../assets/contants/data";
+import { userProfileProps } from "../types/types";
 
 const Navbar: React.FC = () => {
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+  const [profile, setProfile] = useState({
+    userName: "Alex Meian",
+    designation: "Product Manager",
+  });
+  const open = Boolean(anchorEl);
+
+  const handleClick = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorEl((prev: HTMLElement | null) =>
+      prev === null ? event.currentTarget : null
+    );
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const changeProfile = (newUserName: string, newDesignation: string) => {
+    setProfile({ userName: newUserName, designation: newDesignation });
+    handleClose();
+  };
+
   return (
     <AppBar
       position="static"
       sx={{
         boxShadow: "none",
-        paddingX: 3,
+        paddingX: { xs: 1, sm: 3 },
         paddingY: 1,
         bgcolor: "transparent",
         borderBottom: "1px solid #ccc",
@@ -36,7 +63,7 @@ const Navbar: React.FC = () => {
         }}
       >
         <Typography variant="h4" fontWeight={"bold"} color={colors.black}>
-          Dashboard
+          Promage
         </Typography>
         <Box
           sx={{
@@ -67,7 +94,7 @@ const Navbar: React.FC = () => {
           <IconButton sx={{ background: "#fff", padding: 1.4 }}>
             <NotificationsIcon sx={{ color: "black" }} />
           </IconButton>
-          <Box
+          <Button
             sx={{
               display: "flex",
               alignItems: "center",
@@ -77,6 +104,7 @@ const Navbar: React.FC = () => {
               padding: "4px 10px",
               boxShadow: "0px 2px 10px rgba(0,0,0,0.1)",
             }}
+            onClick={handleClick}
           >
             <Avatar src="/path-to-image.jpg" sx={{ width: 30, height: 30 }} />
 
@@ -88,19 +116,32 @@ const Navbar: React.FC = () => {
                 color={colors.black}
                 sx={{ fontSize: 14 }}
               >
-                Alex Meian
+                {profile.userName}
               </Typography>
               <Typography
                 variant="caption"
                 color={colors.black}
                 sx={{ fontSize: 10 }}
               >
-                Product Manager
+                {profile.designation}
               </Typography>
             </Box>
 
             <ArrowDropDown sx={{ fontSize: 24, color: colors.black }} />
-          </Box>
+            <Dropdown anchorEl={anchorEl} onClose={handleClose} open={open}>
+              {userProfile &&
+                userProfile?.map((user: userProfileProps) => {
+                  return (
+                    <UserProfile
+                      key={user?.id}
+                      userName={user?.userName}
+                      designation={user?.designation}
+                      changeProfile={changeProfile}
+                    />
+                  );
+                })}
+            </Dropdown>
+          </Button>
         </Box>
 
         <MenuIcon

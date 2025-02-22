@@ -27,8 +27,11 @@ const OverviewCard = ({
         padding: 2.5,
         borderRadius: 3,
         boxShadow: "0px 2px 4px rgba(0,0,0,0.1)",
-        minWidth: "calc(100% / 4 - 1%)",
-        flex: "1 1 calc(25% - 8)",
+        minWidth: {
+          xs: "100%",
+          sm: "calc(100% / 2 - 1%)",
+          md: "calc(100% / 4 - 1%)",
+        },
       }}
     >
       <Typography

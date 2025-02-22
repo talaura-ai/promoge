@@ -1,5 +1,5 @@
 import { Badge, Box, Tab, Tabs } from "@mui/material";
-import { tabs } from "../assets/contants/contants";
+import { tabs } from "../assets/contants/data";
 import { TabsProps } from "../types/types";
 import { colors } from "../assets/contants/colors";
 
@@ -13,13 +13,16 @@ const TabHeader = ({ activeTab, setActiveTab }: TabHeaderProps) => {
     <Tabs
       value={activeTab}
       onChange={(_, newValue) => setActiveTab(newValue)}
-      variant="standard"
+      variant="scrollable"
+      scrollButtons="auto"
       sx={{
         "& .MuiTabs-indicator": {
           backgroundColor: "#3b82f6",
           height: "3px",
           borderRadius: "4px",
         },
+        overflowX: "scroll",
+        width: "100%",
       }}
     >
       {tabs.map((tab: TabsProps, index: number) => {

@@ -19,7 +19,7 @@ const Header = ({
         marginBottom: 2,
       }}
     >
-      <Typography variant="h6" fontWeight="bold">
+      <Typography fontWeight="bold" variant="h6">
         {heading}
       </Typography>
 

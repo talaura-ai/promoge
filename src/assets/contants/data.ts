@@ -3,6 +3,7 @@ import {
   ProjectDataProps,
   TabsProps,
   TasksDataProps,
+  userProfileProps,
   WorkloadDataProps,
 } from "../../types/types";
 
@@ -56,6 +57,11 @@ export const projectHeader: string[] = [
 ];
 
 export const projectData: ProjectDataProps[] = [
+  {
+    name: "All",
+    manager: "All",
+    status: "All",
+  },
   {
     name: "Nelsa web development",
     manager: "Om Prakash Sao",
@@ -141,4 +147,22 @@ export const tabs: TabsProps[] = [
   { label: "Important", count: null },
   { label: "Notes", count: 5 },
   { label: "Links", count: 10 },
+];
+
+export const userProfile: userProfileProps[] = [
+  {
+    id: "1",
+    userName: "Alex Ben",
+    designation: "Product Manager",
+  },
+  {
+    id: "2",
+    userName: "Shimon Menon",
+    designation: "Business Head",
+  },
+  {
+    id: "2",
+    userName: "Marc Stone",
+    designation: "Creative Head",
+  },
 ];

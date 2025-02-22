@@ -1,11 +1,22 @@
 import { Box, Typography } from "@mui/material";
 import OverviewCard from "./ui/OverviewCard";
-import { overViewCardDetaisl } from "../assets/contants/contants";
-import Dropdown from "./ui/Dropdown";
+import { overViewCardDetaisl } from "../assets/contants/data";
+import DropdownButton from "./ui/DropdownButton";
+import Container from "./ui/Container";
+import { useState } from "react";
+import Options from "./ui/Options";
 
 const Overview = () => {
+  const [showOptions, setShowOptions] = useState("");
+  const [duration, setDuration] = useState("Last 15 days");
+
+  const handleSelect = (value: string) => {
+    setDuration(value);
+    setTimeout(() => setShowOptions(""), 0);
+  };
+
   return (
-    <Box paddingX={3}>
+    <Container>
       <Box
         sx={{
           display: "flex",
@@ -18,7 +29,19 @@ const Overview = () => {
           Overview
         </Typography>
 
-        <Dropdown text="Last 30 days" />
+        <DropdownButton
+          text={duration}
+          onClick={() =>
+            setShowOptions((prev) => (prev !== "duration" ? "duration" : ""))
+          }
+        >
+          {showOptions === "duration" && (
+            <Options
+              list={["Last 15 days", "Last 30 days", "Last 1 month"]}
+              onSelect={(state) => handleSelect(state)}
+            />
+          )}
+        </DropdownButton>
       </Box>
       <Box
         sx={{
@@ -43,7 +66,7 @@ const Overview = () => {
           );
         })}
       </Box>
-    </Box>
+    </Container>
   );
 };
 

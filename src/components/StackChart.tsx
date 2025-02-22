@@ -26,8 +26,8 @@ const StackChart = ({
             <Box
               key={index}
               sx={{
-                width: 40,
-                height: 40,
+                width: { xs: 25, sm: 40 },
+                height: { xs: 25, sm: 40 },
                 borderRadius: "50%",
                 display: "flex",
                 alignItems: "center",

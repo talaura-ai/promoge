@@ -23,6 +23,7 @@
     "ag-charts-enterprise": "^11.1.0",
     "ag-charts-react": "^11.1.0",
     "clone": "^2.1.2",
+    "lucide-react": "^0.475.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "styled-components": "^6.1.15"

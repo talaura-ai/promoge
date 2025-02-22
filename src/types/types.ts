@@ -12,10 +12,10 @@ export type OverViewCardProps = {
 export type ProjectDataProps = {
   name: string;
   manager: string;
-  dueDate: string;
+  dueDate?: string;
   status: string;
-  progress: number;
-  color: string;
+  progress?: number;
+  color?: string;
 };
 
 export type TasksDataProps = {
@@ -32,4 +32,10 @@ export type WorkloadDataProps = {
 export type TabsProps = {
   label: string;
   count: number | null;
+};
+
+export type userProfileProps = {
+  id: string;
+  userName: string;
+  designation: string;
 };

@@ -4,7 +4,7 @@ const CircularPercantage = ({
   value,
   color,
 }: {
-  value: number;
+  value?: number;
   color: string;
 }) => {
   return (

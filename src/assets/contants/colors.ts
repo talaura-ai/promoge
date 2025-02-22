@@ -5,4 +5,5 @@ export const colors: Record<string, string> = {
   white: "#fff",
   red: "red",
   green: "green",
+  orange: "#e75f2b",
 };
